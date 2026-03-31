@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Productivity Hub</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+
+<body>
+
+  <header>
+    <h1>Productivity Hub</h1>
+
+    <nav>
+      <button onclick="showPage('notes')">Notes</button>
+      <button onclick="showPage('tasks')">Tasks</button>
+      <button id="themeBtn" onclick="toggleTheme()">🌙</button>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- NOTES PAGE -->
+    <section id="notesPage" class="page active">
+      <h2>Notes</h2>
+
+      <div class="input-box">
+        <input type="text" id="noteTitle" placeholder="Note title">
+        <textarea id="noteContent" placeholder="Note content"></textarea>
+        <input type="text" id="noteTag" placeholder="Tag (any word you want)">
+        <input type="color" id="noteColor" value="#ffffff">
+        <button type="button" onclick="addNote()">Add Note</button>
+      </div>
+
+      <!-- SEARCH -->
+      <input 
+        type="text" 
+        id="searchInput" 
+        placeholder="Search notes..." 
+        onkeyup="renderNotes()" 
+        style="margin:10px 0; padding:8px; width:100%;"
+      >
+      <button onclick="exportNotes()">Export All Notes 📁</button>
+ 
+      <!-- NOTES LIST -->
+      <div id="notesContainer" class="card-container"></div>
+    </section>
+
+    <!-- TASKS PAGE -->
+    <section id="tasksPage" class="page">
+      <h2>Tasks</h2>
+
+      <div class="input-box">
+        <input type="text" id="taskInput" placeholder="Enter task">
+        <button type="button" onclick="addTask()">Add Task</button>
+      </div>
+
+      <div id="tasksContainer" class="card-container"></div>
+    </section>
+
+  </main>
+
+  <!-- EDIT NOTE MODAL (✅ MOVED INSIDE BODY - IMPORTANT FIX) -->
+  <div id="editModal" class="modal">
+    <div class="modal-content">
+
+      <h2> Your Note </h2>
+
+      <input type="text" id="editTitle" placeholder="Title">
+      <textarea id="editContent" placeholder="Content"></textarea>
+      <input type="text" id="editTag" placeholder="Tag">
+
+      <div style="margin-top:10px;">
+        <button onclick="saveEdit()">Save</button>
+        <button onclick="closeModal()">Cancel</button>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
